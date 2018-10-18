@@ -43,6 +43,13 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
 
 #pragma mark - Initialization
 
+-(void) didMoveToWindow{
+[super didMoveToWindow];
+ if (@available(iOS 11.0, *)) {
+     [[self bottomAnchor] constraintLessThanOrEqualToSystemSpacingBelowAnchor:self.window.safeAreaLayoutGuide.bottomAnchor multiplier:1.0].active = YES;
+     }
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
